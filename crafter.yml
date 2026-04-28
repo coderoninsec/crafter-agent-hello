@@ -1,0 +1,74 @@
+goal: "Build your first AI agent"
+
+stage: 1
+
+stages:
+  - id: 1
+    name: "Introduction"
+    checks:
+      - type: output_contains
+        value: "AGENT"
+
+  - id: 2
+    name: "Local Setup"
+    checks:
+      - type: output_length_greater
+        value: 10
+
+  - id: 3
+    name: "Communicate with Agent"
+    checks:
+      - type: output_not_equals
+        value: "TODO"
+      - type: output_contains
+        value: "[RESPONSE]"
+
+  - id: 4
+    name: "Advertise Tool"
+    checks:
+      - type: output_contains
+        value: "[TOOL_AVAILABLE]"
+      - type: output_contains
+        value: "echo"
+
+  - id: 5
+    name: "Execute Tool"
+    checks:
+      - type: output_contains
+        value: "[TOOL_EXECUTED]"
+      - type: output_contains
+        value: "Echo:"
+
+  - id: 6
+    name: "Agent Loop"
+    checks:
+      - type: output_contains
+        value: "[THINK]"
+      - type: output_contains
+        value: "[ACT]"
+      - type: output_contains
+        value: "[OBSERVE]"
+
+  - id: 7
+    name: "Write Tool"
+    checks:
+      - type: output_contains
+        value: "[WRITE]"
+      - type: output_contains
+        value: "file"
+
+  - id: 8
+    name: "Bash Tool"
+    checks:
+      - type: output_contains
+        value: "[BASH]"
+      - type: output_contains
+        value: "command"
+
+  - id: 9
+    name: "Complete"
+    checks:
+      - type: output_contains
+        value: "[FINAL_ANSWER]"
+      - type: output_length_greater
+        value: 50
